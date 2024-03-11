@@ -1,63 +1,61 @@
-# Node.js Backend Project
+# Backend for BuySimply Backend Test
 
-This is a Node.js backend project that serves as the server-side application for FullStack Developer Test. It provides APIs for authentication, user management, and other functionalities required by the client-side application.
+This is the backend implementation for BuySimply Test, a web application for managing loans.
 
-## Getting Started
+## Table of Contents
+- [Introduction](#introduction)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Setup](#setup)
+- [API Endpoints](#api-endpoints)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
 
-To get started with this project, follow these steps:
+## Introduction
 
-1. **Clone the repository**: Clone this repository to your local machine using Git.
-
-   ```bash
-   git clone https://github.com/Chandrasura25/Full-Stack-Developer-test-backend
-   ```
-
-2. **Install dependencies**: Navigate to the project directory and install the dependencies using npm or yarn.
-
-   ```bash
-   cd node-backend
-   npm install
-   # or
-   yarn install
-   ```
-
-3. **Set up environment variables**: Create a `.env` file in the root directory of the project and add the required environment variables. You can use the provided `.env.example` file as a template.
-
-4. **Start the server**: Run the Node.js server to start the application.
-
-   ```bash
-   npm start
-   # or
-   yarn start
-   ```
-
-   By default, the server will start on port 3000. You can configure the port by setting the `PORT` environment variable in the `.env` file.
+This backend server is built to support the BuySimply web application. It provides RESTful API endpoints for managing staff authentication and loan data.
 
 ## Features
 
-- **User Authentication**: Provides endpoints for user authentication using JSON Web Tokens (JWT).
-- **User Management**: Allows users to register, login, and view their profile information.
-- **API Endpoints**: Defines various API endpoints for interacting with the application.
+- Staff authentication with JWT role-based authentication.
+- CRUD operations for managing loans.
+- Filtering loans based on various criteria such as status and maturity date.
+- Secure routes accessible only by authorized staff members.
 
-## Folder Structure
+## Technologies Used
 
+- Node.js
+- Express.js
+- JSON Web Tokens (JWT) for authentication
 
-node-backend/
-├── controllers/         # Controller functions for handling requests and responses
-├── models/              # Data models and schemas
-├── routes/              # Route definitions for API endpoints
-├── utils/               # Utility functions, middleware, etc.
-├── .env.example         # Example environment variables file
-├── index.js             # Main entry point of the application
-└── package.json         # Dependencies and scripts configuration
+## Setup
+
+1. Clone this repository.
+2. Install dependencies using `npm install`.
+3. Set up environment variables as needed.
+4. Run the server using `npm start`.
+
+## API Endpoints
+
+- `/login`: POST request to authenticate staff and generate JWT token.
+- `/logout`: POST request to clear staff's session (JWT token).
+- `/loans`: 
+  - GET request to fetch all loans.
+  - GET request with query parameter `status` to filter loans by status.
+- `/loans/:userEmail/get`: GET request to fetch loans of a specific user by their email.
+- `/loans/expired`: GET request to fetch loans with expired maturity date.
+- `/loan/:loanId/delete`: DELETE request to delete a loan data (accessible only by super admin).
+
+## Usage
+
+- Ensure you have set up the environment variables, especially the JWT secret.
+- Start the server and access the API endpoints using a tool like Postman or integrate them into your frontend application.
 
 ## Contributing
 
-Contributions are welcome! If you'd like to contribute to this project, feel free to fork the repository and submit a pull request.
+Contributions are welcome! If you find any issues or have suggestions for improvements, feel free to open an issue or submit a pull request.
 
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
-```
-
-Customize this template as needed for your project, including project name, features, folder structure, and contribution guidelines. Make sure to update the `.env.example` file with the necessary environment variables required by your application.
